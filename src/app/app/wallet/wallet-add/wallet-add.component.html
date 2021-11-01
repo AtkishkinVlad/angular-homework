@@ -1,0 +1,25 @@
+<form class="form" [formGroup]="form" (submit)="submit()">
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="input1">
+      Название
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input tuiTextfieldSize="s" formControlName="input2">
+      Стоимость
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row buttons">
+    <button
+      [disabled]="form.invalid"
+      tuiButton
+      class="tui-form__button"
+      size="s"
+      type="submit"
+    >
+      Добавить
+    </button>
+  </div>
+</form>
