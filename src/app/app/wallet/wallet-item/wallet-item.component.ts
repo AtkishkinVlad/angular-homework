@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Purchase} from '../../../../shared/models/Purchase';
 
 @Component({
@@ -10,10 +10,17 @@ export class WalletItemComponent {
   @Input()
   purchase!: Purchase;
 
+  @Output()
+  delete = new EventEmitter<Purchase>();
+
   constructor() {
   }
 
   get formattedPrice(): string {
     return `${this.purchase.price} ₽`;
+  }
+
+  onClick() {
+    this.delete.next(this.purchase);
   }
 }

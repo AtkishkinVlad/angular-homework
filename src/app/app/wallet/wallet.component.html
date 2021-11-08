@@ -17,10 +17,13 @@
 
   <app-wallet-add *ngIf="expanded" (add)="addPurchase($event)"></app-wallet-add>
 
-  <app-wallet-item *ngFor="let p of purchases" [purchase]="p"></app-wallet-item>
+  <app-wallet-item *ngFor="let p of purchasesService.purchases"
+                   [purchase]="p"
+                   (delete)="delPurchase($event)"
+  ></app-wallet-item>
 
   <div class="footer">
     <span class="caption">Итого:&nbsp;</span>
-    <strong>{{ summary }}💰</strong>
+    <strong>{{ purchasesService.summary }}💰</strong>
   </div>
 </div>

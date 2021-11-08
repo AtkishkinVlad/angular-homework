@@ -1,24 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Purchase} from '../../../shared/models/Purchase';
-
-const data: Purchase[] = [
-  {
-    title: 'Проезд на метро',
-    price: 40
-  },
-  {
-    title: 'Iphone Pro Max XXL',
-    price: 100500
-  },
-  {
-    title: 'Доширак (острый)',
-    price: 123
-  },
-  {
-    title: 'Доширак',
-    price: 100
-  }
-];
+import {PurchasesService} from '../../../shared/services/purchases.service';
 
 @Component({
   selector: 'app-wallet',
@@ -26,26 +8,25 @@ const data: Purchase[] = [
   styleUrls: ['./wallet.component.less']
 })
 export class WalletComponent implements OnInit {
-  purchases: Purchase[] = [];
   expanded = false;
-  summary = 0;
+
+  constructor(public purchasesService: PurchasesService) {
+  }
 
   ngOnInit(): void {
-    this.purchases = data;
-    this.updateSummary();
+    this.purchasesService.initialize();
   }
 
   addPurchase(purchase: Purchase): void {
-      this.purchases.push(purchase);
-      this.updateSummary();
-      this.toggle();
+    this.purchasesService.addPurchase(purchase);
+    this.toggle();
+  }
+
+  delPurchase(purchase: Purchase): void {
+    this.purchasesService.delPurchase(purchase);
   }
 
   toggle(): void {
     this.expanded = !this.expanded;
-  }
-
-  private updateSummary(): void {
-    this.summary = this.purchases.reduce((sum, p) => p.price + sum, 0);
   }
 }
