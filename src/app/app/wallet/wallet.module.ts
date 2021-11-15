@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {WalletComponent} from './wallet.component';
 import {WalletItemComponent} from './wallet-item/wallet-item.component';
-import {TuiBadgeModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiBadgeModule, TuiComboBoxModule, TuiDataListWrapperModule, TuiInputModule} from '@taiga-ui/kit';
 import {WalletAddComponent} from './wallet-add/wallet-add.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiButtonModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
@@ -10,6 +10,9 @@ import {IPurchasesApiService, IPurchasesApiServiceToken} from '../../../shared/i
 import {PurchasesMockApiService} from '../../../shared/services/purchasesMockApi.service';
 import {HttpClientModule} from '@angular/common/http';
 import {PurchasesApiService} from '../../../shared/services/purchasesApi.service';
+import {IPositionsApiServiceToken} from '../../../shared/interfaces/IPositionsApiService';
+import {PositionsApiService} from '../../../shared/services/positionsApi.service';
+import {TuiLetModule} from '@taiga-ui/cdk';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,15 @@ import {PurchasesApiService} from '../../../shared/services/purchasesApi.service
     TuiInputModule,
     TuiTextfieldControllerModule,
     TuiButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    TuiComboBoxModule,
+    TuiLetModule,
+    TuiDataListWrapperModule
   ],
   providers: [
     // {provide: IPurchasesApiServiceToken, useClass: PurchasesMockApiService}
-    {provide: IPurchasesApiServiceToken, useClass: PurchasesApiService}
+    {provide: IPurchasesApiServiceToken, useClass: PurchasesApiService},
+    {provide: IPositionsApiServiceToken, useClass: PositionsApiService}
   ]
 })
 export class WalletModule {
