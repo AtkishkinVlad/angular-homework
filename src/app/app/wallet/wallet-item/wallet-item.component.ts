@@ -36,11 +36,15 @@ export class WalletItemComponent {
     this.editMode = !this.editMode;
   }
 
+  stopPropagation() {
+    event?.stopPropagation();
+  }
+
   onClick() {
     this.delete.next(this.purchase);
   }
 
-  updatePurchase(purchase: Purchase): void {
-    this.purchasesService.updatePurchase(this.purchase);
+  updatePurchase(purchase: Purchase, id: string): void {
+    this.purchasesService.updatePurchase(purchase, id);
   }
 }

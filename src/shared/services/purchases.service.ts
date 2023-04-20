@@ -42,8 +42,8 @@ export class PurchasesService {
     });
   }
 
-  updatePurchase(purchase: Purchase): void {
-    this.purchasesApiService.update(purchase, purchase.id!).subscribe(() => {
+  updatePurchase(purchase: Purchase, id: string): void {
+    this.purchasesApiService.update(purchase, id).subscribe(() => {
       this.initialize();
     });
   }

@@ -22,5 +22,7 @@
     </button>
   </dl>
 
-  <app-wallet-add *ngIf="editMode" (add)="updatePurchase(this.purchase)" [comment]="purchase.comment" [title]="purchase.title" [cost]="purchase.price"></app-wallet-add>
+  <div (click)="stopPropagation()" style="width: 350px;">
+    <app-wallet-add *ngIf="editMode" (add)="updatePurchase($event, this.purchase.id!)" [comment]="purchase.comment" [title]="purchase.title" [cost]="purchase.price"></app-wallet-add>
+  </div>
 </div>
