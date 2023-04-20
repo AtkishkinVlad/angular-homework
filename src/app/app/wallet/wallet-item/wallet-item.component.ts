@@ -1,10 +1,11 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Purchase} from '../../../../shared/models/Purchase';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Purchase } from '../../../../shared/models/Purchase';
+import { PurchasesService } from 'src/shared/services/purchases.service';
 
 @Component({
   selector: 'app-wallet-item',
   templateUrl: './wallet-item.component.html',
-  styleUrls: ['./wallet-item.component.less']
+  styleUrls: ['./wallet-item.component.less'],
 })
 export class WalletItemComponent {
   @Input()
@@ -13,14 +14,37 @@ export class WalletItemComponent {
   @Output()
   delete = new EventEmitter<Purchase>();
 
-  constructor() {
-  }
+  showAdditionalInfo = false;
+  editMode = false;
+
+  constructor(public purchasesService: PurchasesService) {}
 
   get formattedPrice(): string {
     return `${this.purchase.price} ₽`;
   }
 
+  toggleDisplay() {
+    if (this.editMode) {
+      this.editMode = false;
+    }
+
+    this.showAdditionalInfo = !this.showAdditionalInfo;
+  }
+
+  toggleEditMode() {
+    event?.stopPropagation();
+    this.editMode = !this.editMode;
+  }
+
+  stopPropagation() {
+    event?.stopPropagation();
+  }
+
   onClick() {
     this.delete.next(this.purchase);
+  }
+
+  updatePurchase(purchase: Purchase, id: string): void {
+    this.purchasesService.updatePurchase(purchase, id);
   }
 }

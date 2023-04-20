@@ -1,17 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Purchase} from '../../../shared/models/Purchase';
-import {PurchasesService} from '../../../shared/services/purchases.service';
+import { Purchase } from './../../../shared/models/Purchase';
+import { Component, OnInit } from '@angular/core';
+import { PurchasesService } from '../../../shared/services/purchases.service';
 
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.less']
+  styleUrls: ['./wallet.component.less'],
 })
 export class WalletComponent implements OnInit {
   expanded = false;
 
-  constructor(public purchasesService: PurchasesService) {
-  }
+  constructor(public purchasesService: PurchasesService) {}
 
   ngOnInit(): void {
     this.purchasesService.initialize();

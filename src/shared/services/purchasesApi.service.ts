@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-const host = 'http://localhost:3000/purchases';
+const host = 'http://tfs/purchases';
 
 @Injectable()
 export class PurchasesApiService implements IPurchasesApiService {
@@ -17,6 +17,10 @@ export class PurchasesApiService implements IPurchasesApiService {
 
   delete(id: string): Observable<void> {
     return this.httpClient.delete<void>(`${host}/${id}`);
+  }
+
+  update(purchase: Purchase, id: string): Observable<void> {
+    return this.httpClient.put<void>(`${host}/${id}`, purchase);
   }
 
   getAll(): Observable<Purchase[]> {
