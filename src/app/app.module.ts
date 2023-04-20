@@ -6,7 +6,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   TuiRootModule,
 } from '@taiga-ui/core';
+import { HttpClientModule } from '@angular/common/http';
 import {WalletModule} from './app/wallet/wallet.module';
+import { redirectInterceptorProviders } from './interceptor';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,10 @@ import {WalletModule} from './app/wallet/wallet.module';
     BrowserAnimationsModule,
     TuiRootModule,
     WalletModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [redirectInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

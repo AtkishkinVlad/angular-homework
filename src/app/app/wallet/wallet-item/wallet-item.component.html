@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (click)="toggleDisplay()">
   {{ purchase.title }}
 
   <tui-badge
@@ -9,4 +9,18 @@
   ></tui-badge>
 
   <span class="close" (click)="onClick()">X</span>
+
+  <dl style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;" *ngIf = "showAdditionalInfo" class="item__additional-info">
+    <dt *ngIf="purchase.comment">
+      Комментарий:
+    </dt>
+    <dd *ngIf="purchase.comment">
+      {{ purchase.comment }}
+    </dd>
+    <button (click)="toggleEditMode()" tuiButton class="tui-form__button" size="s">
+      Редактировать
+    </button>
+  </dl>
+
+  <app-wallet-add *ngIf="editMode" (add)="updatePurchase(this.purchase)" [comment]="purchase.comment" [title]="purchase.title" [cost]="purchase.price"></app-wallet-add>
 </div>

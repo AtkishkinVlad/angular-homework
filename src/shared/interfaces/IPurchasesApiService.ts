@@ -9,5 +9,7 @@ export interface IPurchasesApiService {
 
   add(purchase: Purchase): Observable<void>;
 
+  update(purchase: Purchase, id: string): Observable<void>;
+
   delete(id: string): Observable<void>;
 }

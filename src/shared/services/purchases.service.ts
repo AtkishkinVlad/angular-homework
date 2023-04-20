@@ -42,6 +42,12 @@ export class PurchasesService {
     });
   }
 
+  updatePurchase(purchase: Purchase): void {
+    this.purchasesApiService.update(purchase, purchase.id!).subscribe(() => {
+      this.initialize();
+    });
+  }
+
   private updateSummary(): void {
     this._summary = this._purchases.reduce((sum, p) => p.price + sum, 0);
   }

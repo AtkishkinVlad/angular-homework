@@ -19,6 +19,10 @@ export class PurchasesApiService implements IPurchasesApiService {
     return this.httpClient.delete<void>(`${host}/${id}`);
   }
 
+  update(purchase: Purchase, id: string): Observable<void> {
+    return this.httpClient.put<void>(`${host}/${id}`, purchase);
+  }
+
   getAll(): Observable<Purchase[]> {
     return this.httpClient.get<Purchase[]>(host);
   }
