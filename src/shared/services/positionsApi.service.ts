@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {IPositionsApiService} from '../interfaces/IPositionsApiService';
 import {Position} from '../models/Position';
 
-const host = 'http://localhost:3000/positions';
+const host = 'http://tfs';
 
 @Injectable()
 export class PositionsApiService implements IPositionsApiService {

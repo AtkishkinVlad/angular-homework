@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class RedirectInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const httpsReq = req.clone({
-      url: req.url.replace("http://localhost:3000", "http://tfs")
+      url: req.url.replace("http://tfs", "http://localhost:3000")
     });
 
     return next.handle(httpsReq);
