@@ -13,6 +13,18 @@ export class CartItemsService {
     this.cartItems.push(item);
   }
 
+  itemFreq(targetItem: Product) {
+    let count = 0;
+
+    for (const item of this.cartItems) {
+      if (item.title === targetItem.title) {
+        count++;
+      } 
+    }
+
+    return count;
+  }
+
   deleteItem(item: Product) {
     const index = this.cartItems.indexOf(item);
     if (index !== -1) {

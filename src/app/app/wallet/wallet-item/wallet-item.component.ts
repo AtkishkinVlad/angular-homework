@@ -21,6 +21,10 @@ export class WalletItemComponent {
     return `${this.purchase.price} ₽`;
   }
 
+  get productFreq(): string {
+    return `${this.cartItemService.itemFreq(this.purchase)}`;
+  }
+
   onClick() {
     this.cartItemService.deleteItem(this.purchase);
   }

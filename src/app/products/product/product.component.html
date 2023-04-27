@@ -4,14 +4,18 @@
       {{ product.title }}
     </span>
     <tui-badge
-        class="info__price"
-        style="background: aliceblue"
-        status="success"
-        [value]="formattedPrice"
-        [hoverable]="true"
-      ></tui-badge>
+      class="info__price"
+      style="background: aliceblue"
+      status="success"
+      [value]="formattedPrice"
+      [hoverable]="true"
+    ></tui-badge>
   </div>
-  <form style="margin: 36px; display: flex; flex-direction: column; gap: 16px;" [formGroup]="testForm" (submit)="submit()">
+  <form
+    style="margin: 36px; display: flex; flex-direction: column; gap: 16px"
+    [formGroup]="testForm"
+    (submit)="submit()"
+  >
     <tui-input formControlName="testValue"> Количество </tui-input>
     <button tuiButton class="tui-form__button" size="s" type="submit">
       Добавить
