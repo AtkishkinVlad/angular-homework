@@ -12,6 +12,7 @@ import {PurchasesApiService} from '../../../shared/services/purchasesApi.service
 import {IPositionsApiServiceToken} from '../../../shared/interfaces/IPositionsApiService';
 import {PositionsApiService} from '../../../shared/services/positionsApi.service';
 import {TuiLetModule} from '@taiga-ui/cdk';
+import { OrderFormModule } from 'src/app/order-form/order-form.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {TuiLetModule} from '@taiga-ui/cdk';
     HttpClientModule,
     TuiComboBoxModule,
     TuiLetModule,
-    TuiDataListWrapperModule
+    TuiDataListWrapperModule,
+    OrderFormModule
   ],
   providers: [
     {provide: IPurchasesApiServiceToken, useClass: PurchasesApiService},

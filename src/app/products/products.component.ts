@@ -15,12 +15,5 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.positionService.initialize();
-    for(const item of this.positionService.products) {
-      this.myForm.addControl(item.title,
-        new FormGroup({
-          name: new FormControl(0),
-        })
-      )
-    }
   }
 }
