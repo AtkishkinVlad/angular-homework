@@ -1,4 +1,10 @@
 <tui-root>
-  <app-products></app-products>
+  <app-products *ngIf="isOpenMainScreen"></app-products>
   <!-- <app-wallet></app-wallet> -->
+  <button *ngIf="isOpenMainScreen" (click)="openCart()">
+    Перейти в корзину
+  </button>
+  <button *ngIf="isOpenCart" (click)="openMainScreen()">
+    Вернуться к товарам
+  </button>
 </tui-root>
