@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Purchase} from '../../../../shared/models/Purchase';
+import { CartItemsService } from 'src/shared/services/cart-items.service';
 
 @Component({
   selector: 'app-wallet-item',
@@ -13,7 +14,7 @@ export class WalletItemComponent {
   @Output()
   delete = new EventEmitter<Purchase>();
 
-  constructor() {
+  constructor(public cartItemService: CartItemsService) {
   }
 
   get formattedPrice(): string {
@@ -21,6 +22,6 @@ export class WalletItemComponent {
   }
 
   onClick() {
-    this.delete.next(this.purchase);
+    this.cartItemService.deleteItem(this.purchase);
   }
 }

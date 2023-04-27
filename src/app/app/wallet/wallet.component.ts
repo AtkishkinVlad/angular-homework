@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Purchase} from '../../../shared/models/Purchase';
 import {PurchasesService} from '../../../shared/services/purchases.service';
+import { CartItemsService } from 'src/shared/services/cart-items.service';
 
 @Component({
   selector: 'app-wallet',
@@ -10,8 +11,10 @@ import {PurchasesService} from '../../../shared/services/purchases.service';
 export class WalletComponent implements OnInit {
   expanded = false;
 
-  constructor(public purchasesService: PurchasesService) {
+  constructor(public purchasesService: PurchasesService, public cartItemService: CartItemsService) {
   }
+
+  items = this.cartItemService.getItems();
 
   ngOnInit(): void {
     this.purchasesService.initialize();

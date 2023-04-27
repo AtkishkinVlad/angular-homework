@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { Product } from 'src/shared/models/Product';
+import { CartItemsService } from 'src/shared/services/cart-items.service';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +13,11 @@ export class ProductComponent implements OnInit {
   @Input()
   product!: Product;
 
-  constructor() { }
+  testForm = new FormGroup({
+    testValue: new FormControl(0),
+  });
+
+  constructor(public cartItemsService: CartItemsService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +26,15 @@ export class ProductComponent implements OnInit {
     return `${this.product.price} ₽`;
   }
 
+  submit() {
+    const itemCount = this.testForm.get('testValue')?.value;
+    console.log(this.cartItemsService.getItems());
+    if (itemCount) {
+      this.cartItemsService.addItem(this.product, Number(itemCount))
+    }
+  }
+
   onClick() {
-    
+
   }
 }
