@@ -1,0 +1,14 @@
+<article formControlName="product.title" class="container">
+  <div class="info">
+    <span class="info__title">
+      {{ product.title }}
+    </span>
+    <tui-badge
+      class="info__price"
+      style="background: aliceblue;"
+      status="success"
+      [value]="formattedPrice"
+      [hoverable]="true"
+    ></tui-badge>
+  </div>
+</article>

@@ -4,7 +4,6 @@ import {Observable, of, Subject} from 'rxjs';
 import {catchError, debounce, debounceTime, filter, map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 import {Position} from '../../../../shared/models/Position';
 import {Purchase} from '../../../../shared/models/Purchase';
-import {IPositionsApiService, IPositionsApiServiceToken} from '../../../../shared/interfaces/IPositionsApiService';
 
 class PositionComboboxItem {
   constructor(
@@ -29,25 +28,10 @@ export class WalletAddComponent implements OnInit, OnDestroy {
   readonly search$ = new Subject<string>();
   readonly destroy$ = new Subject<void>();
 
-  readonly items$: Observable<PositionComboboxItem[] | null> = this.search$.pipe(
-    filter(value => value !== null),
-    switchMap(search =>
-      this.serverRequest(search).pipe(
-        debounceTime(500),
-        startWith(null),
-        catchError(() => of(null))
-      )
-    )
-  );
-
   form = new FormGroup({
     input1: new FormControl(null, Validators.required),
     input2: new FormControl(null, Validators.required)
   });
-
-  constructor(@Inject(IPositionsApiServiceToken)
-              private positionsApiService: IPositionsApiService) {
-  }
 
   ngOnInit(): void {
     this.form.valueChanges
@@ -82,12 +66,5 @@ export class WalletAddComponent implements OnInit, OnDestroy {
 
   onSearchChange(searchQuery: string | null): void {
     this.search$.next(searchQuery!);
-  }
-
-  private serverRequest(search: string): Observable<PositionComboboxItem[]> {
-    return this.positionsApiService.search(search)
-      .pipe(
-        map(positions => positions.map(p => new PositionComboboxItem(p)))
-      );
   }
 }

@@ -4,9 +4,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  TuiButtonModule,
   TuiRootModule,
 } from '@taiga-ui/core';
 import {WalletModule} from './app/wallet/wallet.module';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {WalletModule} from './app/wallet/wallet.module';
     BrowserAnimationsModule,
     TuiRootModule,
     WalletModule,
-    AppRoutingModule
+    ProductsModule,
+    AppRoutingModule,
+    TuiButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

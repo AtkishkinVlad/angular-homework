@@ -5,5 +5,5 @@ import {Position} from '../models/Position';
 export const IPositionsApiServiceToken = new InjectionToken('IPositionsApiServiceToken');
 
 export interface IPositionsApiService {
-  search(searchText: string): Observable<Position[]>;
+  get(): Observable<Position[]>;
 }

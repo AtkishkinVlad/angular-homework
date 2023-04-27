@@ -1,0 +1,8 @@
+<section class="container">
+  <form [formGroup]="myForm">
+    <app-product
+      *ngFor="let p of this.positionService.products"
+      [product]="p"
+    ></app-product>
+  </form>
+</section>
