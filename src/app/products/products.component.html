@@ -1,0 +1,11 @@
+<h1 style="text-align: center; margin: 48px;">
+  Тинькофф маркет
+</h1>
+<section class="container">
+  <section>
+    <app-product
+      *ngFor="let p of this.positionService.products"
+      [product]="p"
+    ></app-product>
+  </section>
+</section>

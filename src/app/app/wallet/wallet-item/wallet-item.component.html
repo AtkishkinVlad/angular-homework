@@ -1,12 +1,12 @@
 <div class="container">
   {{ purchase.title }}
-
+  {{ purchase.price }}
   <tui-badge
-    class="support-1"
-    status="success"
-    [value]="formattedPrice"
-    [hoverable]="true"
+      class="info__price"
+      style="background: aliceblue"
+      status="success"
+      [value]="productFreq"
+      [hoverable]="true"
   ></tui-badge>
-
   <span class="close" (click)="onClick()">X</span>
 </div>

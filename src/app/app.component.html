@@ -1,3 +1,12 @@
 <tui-root>
-  <app-wallet></app-wallet>
+  <main style="display: flex; flex-direction: column; align-items: center;">
+    <app-products *ngIf="isOpenMainScreen"></app-products>
+    <app-wallet *ngIf="isOpenCart"></app-wallet>
+    <button tuiButton *ngIf="isOpenMainScreen" (click)="openCart()">
+      Перейти в корзину
+    </button>
+    <button tuiButton *ngIf="isOpenCart" (click)="openMainScreen()">
+      Вернуться на главную
+    </button>
+  </main>
 </tui-root>

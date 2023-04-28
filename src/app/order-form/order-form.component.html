@@ -1,0 +1,41 @@
+<section class="container">
+  <h3 class="header">
+    Ваши контактные данные
+  </h3>
+
+  <form class="form" [formGroup]="form" (submit)="submit()">
+    <div class="tui-form__row">
+      <tui-input tuiTextfieldSize="s" formControlName="address">
+        Адрес доставки
+      </tui-input>
+    </div>
+
+    <div class="tui-form__row">
+      <tui-input tuiTextfieldSize="s" formControlName="name">
+        Имя
+      </tui-input>
+    </div>
+
+    <div class="tui-form__row">
+      <tui-input tuiTextfieldSize="s" formControlName="email">
+        Электронная почта
+      </tui-input>
+    </div>
+
+    <div class="tui-form__row buttons">
+      <button
+        [disabled]="form.invalid"
+        tuiButton
+        class="tui-form__button"
+        size="s"
+        type="submit"
+      >
+        Оформить заказ
+      </button>
+    </div>
+  </form>
+
+  <ng-template #content let-data>
+    {{ data }}
+  </ng-template>
+</section>

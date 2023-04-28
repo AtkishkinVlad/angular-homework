@@ -6,4 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  isOpenMainScreen: boolean = true;
+  isOpenCart: boolean = false;
+
+  openMainScreen() {
+    this.isOpenCart = false;
+    this.isOpenMainScreen = true;
+  }
+
+  openCart() {
+    this.isOpenCart = true;
+    this.isOpenMainScreen = false;
+  }
 }
