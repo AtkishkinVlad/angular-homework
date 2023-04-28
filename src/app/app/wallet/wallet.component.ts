@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Purchase} from '../../../shared/models/Purchase';
 import {PurchasesService} from '../../../shared/services/purchases.service';
 import { CartItemsService } from 'src/shared/services/cart-items.service';
 
@@ -15,21 +14,9 @@ export class WalletComponent implements OnInit {
   }
 
   items = this.cartItemService.getItems();
+  totalPrice = this.cartItemService.cartItemTotalPrice();
 
   ngOnInit(): void {
     this.purchasesService.initialize();
-  }
-
-  addPurchase(purchase: Purchase): void {
-    this.purchasesService.addPurchase(purchase);
-    this.toggle();
-  }
-
-  delPurchase(purchase: Purchase): void {
-    this.purchasesService.delPurchase(purchase);
-  }
-
-  toggle(): void {
-    this.expanded = !this.expanded;
   }
 }

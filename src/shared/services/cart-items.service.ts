@@ -19,10 +19,14 @@ export class CartItemsService {
     for (const item of this.cartItems) {
       if (item.title === targetItem.title) {
         count++;
-      } 
+      }
     }
 
     return count;
+  }
+
+  cartItemTotalPrice() {
+    return this.cartItems.reduce((acc, curr) => acc += curr.price, 0);
   }
 
   deleteItem(item: Product) {
